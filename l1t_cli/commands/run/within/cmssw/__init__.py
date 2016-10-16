@@ -12,11 +12,12 @@
 """
 import logging
 import os
+import hepshell
 
 LOG = logging.getLogger(__name__)
 
 
-class Command(C):
+class Command(hepshell.Command):
 
     def __init__(self, path=__file__, doc=__doc__):
         super(Command, self).__init__(path, doc)
@@ -30,7 +31,7 @@ class Command(C):
         return True
 
 
-def run_within_cmssw(command, cmssw_src=CMSSW_SRC, logger=LOG):
+def run_within_cmssw(command, cmssw_src, logger=LOG):
     commands = [
         'cd {CMSSW_SRC}',
         'source /cvmfs/cms.cern.ch/cmsset_default.sh',
